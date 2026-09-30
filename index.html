@@ -2394,10 +2394,11 @@
       <span class="sectie-label">Zoekopdracht</span>
       <h2 style="font-family:'Georgia',serif; font-size:clamp(1.65rem,2.8vw,2.35rem); font-weight:normal; color:var(--bruin); margin-bottom:1rem; line-height:1.25;">Wij Zoeken Uw Droomauto</h2>
       <p style="color:var(--subtekst); font-size:0.92rem; line-height:1.85; margin-bottom:2.5rem;">Staat het voertuig dat u zoekt niet in ons aanbod? Geef uw wensen door en wij gaan actief voor u op zoek — in heel Nederland en Europa. Wij informeren u zodra wij een passend voertuig hebben gevonden.</p>
-      <form action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="verstuurZoek(event)">
+      <form action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;">
         <input type="hidden" name="_subject" value="Nieuwe zoekopdracht via oudegeinexclusive.nl">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://oudegeinexclusive.github.io/oudegeinexclusive/bedankt.html">
         <input type="text" name="_honey" style="display:none">
         <div class="form-groep" style="--fg-lbl:var(--taupe-licht);">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Merk</label>
@@ -2539,10 +2540,11 @@
         <div class="ot-rij"><span class="ot-dag">Zondag</span><span class="ot-tijd">Op afspraak</span></div>
       </div>
       <div>
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" onsubmit="verstuurForm(event)">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST">
           <input type="hidden" name="_subject" value="Nieuw bericht via oudegeinexclusive.nl">
           <input type="hidden" name="_template" value="table">
           <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="https://oudegeinexclusive.github.io/oudegeinexclusive/bedankt.html">
           <input type="text" name="_honey" style="display:none">
           <div class="form-rij">
             <div class="form-groep"><label>Voornaam</label><input type="text" name="Voornaam" placeholder="Jan" required></div>
