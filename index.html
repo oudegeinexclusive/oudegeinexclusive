@@ -2408,7 +2408,12 @@
       <span class="sectie-label">Zoekopdracht</span>
       <h2 style="font-family:'Georgia',serif; font-size:clamp(1.65rem,2.8vw,2.35rem); font-weight:normal; color:var(--bruin); margin-bottom:1rem; line-height:1.25;">Wij Zoeken Uw Droomauto</h2>
       <p style="color:var(--subtekst); font-size:0.92rem; line-height:1.85; margin-bottom:2.5rem;">Staat het voertuig dat u zoekt niet in ons aanbod? Geef uw wensen door en wij gaan actief voor u op zoek — in heel Nederland en Europa. Wij informeren u zodra wij een passend voertuig hebben gevonden.</p>
-      <form id="zoekForm" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="verstuurZoek(event)">
+      <form id="zoekForm" action="https://api.web3forms.com/submit" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;">
+        <input type="hidden" name="access_key" value="579ee94c-d032-4fd2-bb5a-c3426312d4be">
+        <input type="hidden" name="subject" value="Nieuwe zoekopdracht via oudegeinexclusive.nl">
+        <input type="hidden" name="from_name" value="Oudegein Exclusive website">
+        <input type="hidden" name="redirect" value="https://oudegeinexclusive.nl/bedankt.html">
+        <input type="checkbox" name="botcheck" style="display:none">
         <div class="form-groep" style="--fg-lbl:var(--taupe-licht);">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Merk</label>
           <input type="text" name="Merk" placeholder="bijv. BMW" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
@@ -2549,7 +2554,12 @@
         <div class="ot-rij"><span class="ot-dag">Zondag</span><span class="ot-tijd">Op afspraak</span></div>
       </div>
       <div>
-        <form class="contact-form" id="contactForm" onsubmit="verstuurForm(event)">
+        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="579ee94c-d032-4fd2-bb5a-c3426312d4be">
+          <input type="hidden" name="subject" value="Nieuw bericht via oudegeinexclusive.nl">
+          <input type="hidden" name="from_name" value="Oudegein Exclusive website">
+          <input type="hidden" name="redirect" value="https://oudegeinexclusive.nl/bedankt.html">
+          <input type="checkbox" name="botcheck" style="display:none">
           <div class="form-rij">
             <div class="form-groep"><label>Voornaam</label><input type="text" name="Voornaam" placeholder="Jan" required></div>
             <div class="form-groep"><label>Achternaam</label><input type="text" name="Achternaam" placeholder="Jansen" required></div>
