@@ -5,6 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Oudegein Exclusive – Luxe Automotive Dealer Nieuwegein</title>
   <meta name="description" content="Oudegein Exclusive – Specialist in exclusieve voertuigen, financiering, import, export en lease in Nieuwegein. Bel 06-44414489.">
+  <meta name="keywords" content="luxe auto dealer Nieuwegein, premium voertuigen Utrecht, occasions, financiering, financial lease, auto importeren, auto inkoop taxatie, autoverzekering">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Oudegein Exclusive">
+  <link rel="canonical" href="https://oudegeinexclusive.nl/">
+  <meta name="theme-color" content="#3D322A">
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://oudegeinexclusive.nl/">
+  <meta property="og:title" content="Oudegein Exclusive – Luxe Automotive Dealer Nieuwegein">
+  <meta property="og:description" content="Specialist in exclusieve en luxe voertuigen in Nieuwegein. Verkoop, financiering, lease, import, export en verzekering.">
+  <meta property="og:locale" content="nl_NL">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Oudegein Exclusive – Luxe Automotive Dealer Nieuwegein">
+  <meta name="twitter:description" content="Specialist in exclusieve en luxe voertuigen in Nieuwegein.">
+
+  <!-- Structured data: AutoDealer / LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["AutoDealer","LocalBusiness"],
+    "name": "Oudegein Exclusive",
+    "description": "Specialist in premium en luxe voertuigen in Nieuwegein. Verkoop, financiering, lease, import, export en verzekering.",
+    "url": "https://oudegeinexclusive.nl",
+    "telephone": "+31644414489",
+    "email": "info@oudegeinexclusive.nl",
+    "priceRange": "€€€€",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nijverheidsweg 9R",
+      "addressLocality": "Nieuwegein",
+      "postalCode": "3433 NP",
+      "addressCountry": "NL"
+    },
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"17:00"}
+    ]
+  }
+  </script>
+
+  <!-- GOOGLE ANALYTICS (GA4): vervang G-XXXXXXXXXX door je eigen meet-ID en
+       haal dit commentaarblok weg om Analytics te activeren.
+  [ANALYTICS-START]
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
+  [ANALYTICS-END]
+  -->
+
   <style>
 
     /* ===========================
@@ -1934,8 +1983,6 @@
 <section id="hero">
   <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" poster="">
     <source src="hero-video.mp4" type="video/mp4">
-    <source src="f2136cb7cb96446584898bdee5324539.MOV" type="video/quicktime">
-    <source src="f2136cb7cb96446584898bdee5324539.MOV" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
 
@@ -2347,22 +2394,26 @@
       <span class="sectie-label">Zoekopdracht</span>
       <h2 style="font-family:'Georgia',serif; font-size:clamp(1.65rem,2.8vw,2.35rem); font-weight:normal; color:var(--bruin); margin-bottom:1rem; line-height:1.25;">Wij Zoeken Uw Droomauto</h2>
       <p style="color:var(--subtekst); font-size:0.92rem; line-height:1.85; margin-bottom:2.5rem;">Staat het voertuig dat u zoekt niet in ons aanbod? Geef uw wensen door en wij gaan actief voor u op zoek — in heel Nederland en Europa. Wij informeren u zodra wij een passend voertuig hebben gevonden.</p>
-      <form style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="event.preventDefault(); alert('Zoekopdracht ontvangen! Wij nemen contact met u op.')">
+      <form action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="verstuurZoek(event)">
+        <input type="hidden" name="_subject" value="Nieuwe zoekopdracht via oudegeinexclusive.nl">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
         <div class="form-groep" style="--fg-lbl:var(--taupe-licht);">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Merk</label>
-          <input type="text" placeholder="bijv. BMW" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
+          <input type="text" name="Merk" placeholder="bijv. BMW" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
         </div>
         <div class="form-groep">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Model</label>
-          <input type="text" placeholder="bijv. M4 Competition" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
+          <input type="text" name="Model" placeholder="bijv. M4 Competition" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
         </div>
         <div class="form-groep">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Maximale prijs</label>
-          <input type="text" placeholder="bijv. &euro; 100.000" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
+          <input type="text" name="Maximale prijs" placeholder="bijv. &euro; 100.000" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
         </div>
         <div class="form-groep">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">E-mailadres</label>
-          <input type="email" placeholder="uw@email.nl" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
+          <input type="email" name="E-mailadres" placeholder="uw@email.nl" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
         </div>
         <div style="grid-column:1/-1;">
           <button type="submit" class="btn-taupe" style="width:100%;">Zoekopdracht Indienen</button>
@@ -2488,16 +2539,20 @@
         <div class="ot-rij"><span class="ot-dag">Zondag</span><span class="ot-tijd">Op afspraak</span></div>
       </div>
       <div>
-        <form class="contact-form" id="contactForm" onsubmit="verstuurForm(event)">
+        <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" onsubmit="verstuurForm(event)">
+          <input type="hidden" name="_subject" value="Nieuw bericht via oudegeinexclusive.nl">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
           <div class="form-rij">
-            <div class="form-groep"><label>Voornaam</label><input type="text" placeholder="Jan" required></div>
-            <div class="form-groep"><label>Achternaam</label><input type="text" placeholder="Jansen" required></div>
+            <div class="form-groep"><label>Voornaam</label><input type="text" name="Voornaam" placeholder="Jan" required></div>
+            <div class="form-groep"><label>Achternaam</label><input type="text" name="Achternaam" placeholder="Jansen" required></div>
           </div>
-          <div class="form-groep"><label>E-mailadres</label><input type="email" placeholder="jan@email.nl" required></div>
-          <div class="form-groep"><label>Telefoonnummer</label><input type="tel" placeholder="06-12 34 56 78"></div>
+          <div class="form-groep"><label>E-mailadres</label><input type="email" name="E-mailadres" placeholder="jan@email.nl" required></div>
+          <div class="form-groep"><label>Telefoonnummer</label><input type="tel" name="Telefoonnummer" placeholder="06-12 34 56 78"></div>
           <div class="form-groep">
             <label>Onderwerp</label>
-            <select style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:0.78rem 1rem; color:rgba(255,255,255,0.6); font-family:inherit; font-size:0.86rem; outline:none;">
+            <select name="Onderwerp" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); padding:0.78rem 1rem; color:rgba(255,255,255,0.6); font-family:inherit; font-size:0.86rem; outline:none;">
               <option value="">Selecteer onderwerp</option>
               <option>Aankoop voertuig</option>
               <option>Inkoop / Taxatie</option>
@@ -2509,7 +2564,7 @@
               <option>Algemene vraag</option>
             </select>
           </div>
-          <div class="form-groep"><label>Uw Bericht</label><textarea placeholder="Beschrijf uw wensen of stel uw vraag..." required></textarea></div>
+          <div class="form-groep"><label>Uw Bericht</label><textarea name="Bericht" placeholder="Beschrijf uw wensen of stel uw vraag..." required></textarea></div>
           <button type="submit" class="btn-verstuur">Bericht Versturen</button>
         </form>
         <div class="form-ok" id="formOk">
@@ -2563,8 +2618,7 @@
     </div>
   </div>
   <div class="footer-onder">
-    <p>&copy; 2025 Oudegein Exclusive &mdash; Alle rechten voorbehouden &nbsp;|&nbsp; <a href="#">Privacybeleid</a> &nbsp;|&nbsp; <a href="#">Algemene Voorwaarden</a></p>
-    <p>Kvk-nummer op aanvraag beschikbaar</p>
+    <p>&copy; 2026 Oudegein Exclusive &mdash; Alle rechten voorbehouden &nbsp;|&nbsp; <a href="privacybeleid.html">Privacybeleid</a> &nbsp;|&nbsp; <a href="algemene-voorwaarden.html">Algemene Voorwaarden</a></p>
   </div>
 </footer>
 
@@ -2767,10 +2821,47 @@
     a.addEventListener('click', () => document.getElementById('mobielmenu').classList.remove('open')));
 
   /* Contact formulier */
-  function verstuurForm(e) {
+  async function verstuurForm(e) {
     e.preventDefault();
-    document.getElementById('contactForm').style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
+    var form = document.getElementById('contactForm');
+    var btn = form.querySelector('.btn-verstuur');
+    var oud = btn.textContent;
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    try {
+      var res = await fetch('https://formsubmit.co/ajax/info@oudegeinexclusive.nl', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!res.ok) throw new Error('verzenden mislukt');
+      form.style.display = 'none';
+      document.getElementById('formOk').style.display = 'block';
+    } catch (err) {
+      btn.textContent = oud; btn.disabled = false;
+      alert('Het bericht kon niet worden verzonden. Bel ons gerust op 06-444 144 89 of mail naar info@oudegeinexclusive.nl.');
+    }
+  }
+
+  async function verstuurZoek(e) {
+    e.preventDefault();
+    var form = e.target;
+    var btn = form.querySelector('button[type="submit"]');
+    var oud = btn.textContent;
+    btn.textContent = 'Versturen...'; btn.disabled = true;
+    try {
+      var res = await fetch('https://formsubmit.co/ajax/info@oudegeinexclusive.nl', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
+      });
+      if (!res.ok) throw new Error('verzenden mislukt');
+      btn.textContent = 'Zoekopdracht ontvangen ✓';
+      btn.style.background = '#5a7d5a';
+      setTimeout(function(){ form.reset(); btn.textContent = oud; btn.style.background = ''; btn.disabled = false; }, 3500);
+    } catch (err) {
+      btn.textContent = oud; btn.disabled = false;
+      alert('De zoekopdracht kon niet worden verzonden. Bel ons gerust op 06-444 144 89 of mail naar info@oudegeinexclusive.nl.');
+    }
   }
 
   /* ===== GELUID VIDEO ===== */
