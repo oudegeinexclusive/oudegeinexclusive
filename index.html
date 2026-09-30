@@ -2394,12 +2394,7 @@
       <span class="sectie-label">Zoekopdracht</span>
       <h2 style="font-family:'Georgia',serif; font-size:clamp(1.65rem,2.8vw,2.35rem); font-weight:normal; color:var(--bruin); margin-bottom:1rem; line-height:1.25;">Wij Zoeken Uw Droomauto</h2>
       <p style="color:var(--subtekst); font-size:0.92rem; line-height:1.85; margin-bottom:2.5rem;">Staat het voertuig dat u zoekt niet in ons aanbod? Geef uw wensen door en wij gaan actief voor u op zoek — in heel Nederland en Europa. Wij informeren u zodra wij een passend voertuig hebben gevonden.</p>
-      <form action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;">
-        <input type="hidden" name="_subject" value="Nieuwe zoekopdracht via oudegeinexclusive.nl">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://oudegeinexclusive.github.io/oudegeinexclusive/bedankt.html">
-        <input type="text" name="_honey" style="display:none">
+      <form id="zoekForm" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="verstuurZoek(event)">
         <div class="form-groep" style="--fg-lbl:var(--taupe-licht);">
           <label style="font-size:0.63rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--taupe-licht);">Merk</label>
           <input type="text" name="Merk" placeholder="bijv. BMW" style="border:1px solid var(--beige-donker); padding:0.72rem 1rem; background:var(--wit); font-size:0.85rem; outline:none; font-family:inherit; color:var(--tekst);">
@@ -2540,12 +2535,7 @@
         <div class="ot-rij"><span class="ot-dag">Zondag</span><span class="ot-tijd">Op afspraak</span></div>
       </div>
       <div>
-        <form class="contact-form" id="contactForm" action="https://formsubmit.co/info@oudegeinexclusive.nl" method="POST">
-          <input type="hidden" name="_subject" value="Nieuw bericht via oudegeinexclusive.nl">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="https://oudegeinexclusive.github.io/oudegeinexclusive/bedankt.html">
-          <input type="text" name="_honey" style="display:none">
+        <form class="contact-form" id="contactForm" onsubmit="verstuurForm(event)">
           <div class="form-rij">
             <div class="form-groep"><label>Voornaam</label><input type="text" name="Voornaam" placeholder="Jan" required></div>
             <div class="form-groep"><label>Achternaam</label><input type="text" name="Achternaam" placeholder="Jansen" required></div>
@@ -2570,8 +2560,8 @@
           <button type="submit" class="btn-verstuur">Bericht Versturen</button>
         </form>
         <div class="form-ok" id="formOk">
-          <h3>Bericht Ontvangen</h3>
-          <p>Hartelijk dank. Wij nemen binnen &eacute;&eacute;n werkdag contact met u op.</p>
+          <h3>Bijna verzonden</h3>
+          <p>Uw e-mailprogramma is geopend met uw bericht. Klik daar op <strong>Versturen</strong> om het af te ronden. Lukt dat niet? Mail ons direct op <a href="mailto:info@oudegeinexclusive.nl" style="color:inherit;text-decoration:underline;">info@oudegeinexclusive.nl</a> of bel <a href="tel:0644414489" style="color:inherit;text-decoration:underline;">06-444 144 89</a>.</p>
         </div>
       </div>
     </div>
@@ -2823,47 +2813,42 @@
     a.addEventListener('click', () => document.getElementById('mobielmenu').classList.remove('open')));
 
   /* Contact formulier */
-  async function verstuurForm(e) {
+  function _veld(form, naam){ var el = form.querySelector('[name="'+naam+'"]'); return el ? el.value.trim() : ''; }
+
+  function verstuurForm(e) {
     e.preventDefault();
     var form = document.getElementById('contactForm');
-    var btn = form.querySelector('.btn-verstuur');
-    var oud = btn.textContent;
-    btn.textContent = 'Versturen...'; btn.disabled = true;
-    try {
-      var res = await fetch('https://formsubmit.co/ajax/info@oudegeinexclusive.nl', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-      if (!res.ok) throw new Error('verzenden mislukt');
-      form.style.display = 'none';
-      document.getElementById('formOk').style.display = 'block';
-    } catch (err) {
-      btn.textContent = oud; btn.disabled = false;
-      alert('Het bericht kon niet worden verzonden. Bel ons gerust op 06-444 144 89 of mail naar info@oudegeinexclusive.nl.');
-    }
+    var onderwerp = _veld(form,'Onderwerp') || 'Contactaanvraag';
+    var body =
+      'Naam: ' + _veld(form,'Voornaam') + ' ' + _veld(form,'Achternaam') + '\n' +
+      'E-mail: ' + _veld(form,'E-mailadres') + '\n' +
+      'Telefoon: ' + _veld(form,'Telefoonnummer') + '\n' +
+      'Onderwerp: ' + onderwerp + '\n\n' +
+      'Bericht:\n' + _veld(form,'Bericht') + '\n';
+    window.location.href = 'mailto:info@oudegeinexclusive.nl'
+      + '?subject=' + encodeURIComponent('Website-aanvraag: ' + onderwerp)
+      + '&body=' + encodeURIComponent(body);
+    form.style.display = 'none';
+    document.getElementById('formOk').style.display = 'block';
   }
 
-  async function verstuurZoek(e) {
+  function verstuurZoek(e) {
     e.preventDefault();
-    var form = e.target;
+    var form = document.getElementById('zoekForm');
+    var body =
+      'Zoekopdracht via de website:\n\n' +
+      'Merk: ' + _veld(form,'Merk') + '\n' +
+      'Model: ' + _veld(form,'Model') + '\n' +
+      'Maximale prijs: ' + _veld(form,'Maximale prijs') + '\n' +
+      'E-mail van klant: ' + _veld(form,'E-mailadres') + '\n';
+    window.location.href = 'mailto:info@oudegeinexclusive.nl'
+      + '?subject=' + encodeURIComponent('Website: Zoekopdracht')
+      + '&body=' + encodeURIComponent(body);
     var btn = form.querySelector('button[type="submit"]');
     var oud = btn.textContent;
-    btn.textContent = 'Versturen...'; btn.disabled = true;
-    try {
-      var res = await fetch('https://formsubmit.co/ajax/info@oudegeinexclusive.nl', {
-        method: 'POST',
-        headers: { 'Accept': 'application/json' },
-        body: new FormData(form)
-      });
-      if (!res.ok) throw new Error('verzenden mislukt');
-      btn.textContent = 'Zoekopdracht ontvangen ✓';
-      btn.style.background = '#5a7d5a';
-      setTimeout(function(){ form.reset(); btn.textContent = oud; btn.style.background = ''; btn.disabled = false; }, 3500);
-    } catch (err) {
-      btn.textContent = oud; btn.disabled = false;
-      alert('De zoekopdracht kon niet worden verzonden. Bel ons gerust op 06-444 144 89 of mail naar info@oudegeinexclusive.nl.');
-    }
+    btn.textContent = 'E-mail geopend ✓';
+    btn.style.background = '#5a7d5a';
+    setTimeout(function(){ form.reset(); btn.textContent = oud; btn.style.background = ''; }, 3500);
   }
 
   /* ===== GELUID VIDEO ===== */
