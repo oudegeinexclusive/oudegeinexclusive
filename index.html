@@ -2408,7 +2408,7 @@
       <span class="sectie-label">Zoekopdracht</span>
       <h2 style="font-family:'Georgia',serif; font-size:clamp(1.65rem,2.8vw,2.35rem); font-weight:normal; color:var(--bruin); margin-bottom:1rem; line-height:1.25;">Wij Zoeken Uw Droomauto</h2>
       <p style="color:var(--subtekst); font-size:0.92rem; line-height:1.85; margin-bottom:2.5rem;">Staat het voertuig dat u zoekt niet in ons aanbod? Geef uw wensen door en wij gaan actief voor u op zoek — in heel Nederland en Europa. Wij informeren u zodra wij een passend voertuig hebben gevonden.</p>
-      <form id="zoekForm" action="https://api.web3forms.com/submit" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;">
+      <form id="zoekForm" action="https://api.web3forms.com/submit" method="POST" style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; text-align:left;" onsubmit="return zetOnderwerpZoek(this)">
         <input type="hidden" name="access_key" value="579ee94c-d032-4fd2-bb5a-c3426312d4be">
         <input type="hidden" name="subject" value="Nieuwe zoekopdracht via oudegeinexclusive.nl">
         <input type="hidden" name="from_name" value="Oudegein Exclusive website">
@@ -2554,7 +2554,7 @@
         <div class="ot-rij"><span class="ot-dag">Zondag</span><span class="ot-tijd">Op afspraak</span></div>
       </div>
       <div>
-        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST" onsubmit="return zetOnderwerpContact(this)">
           <input type="hidden" name="access_key" value="579ee94c-d032-4fd2-bb5a-c3426312d4be">
           <input type="hidden" name="subject" value="Nieuw bericht via oudegeinexclusive.nl">
           <input type="hidden" name="from_name" value="Oudegein Exclusive website">
@@ -2584,8 +2584,8 @@
           <button type="submit" class="btn-verstuur">Bericht Versturen</button>
         </form>
         <div class="form-ok" id="formOk">
-          <h3>Bijna verzonden</h3>
-          <p>Uw e-mailprogramma is geopend met uw bericht. Klik daar op <strong>Versturen</strong> om het af te ronden. Lukt dat niet? Mail ons direct op <a href="mailto:info@oudegeinexclusive.nl" style="color:inherit;text-decoration:underline;">info@oudegeinexclusive.nl</a> of bel <a href="tel:0644414489" style="color:inherit;text-decoration:underline;">06-444 144 89</a>.</p>
+          <h3>Bericht verzonden</h3>
+          <p>Hartelijk dank voor uw aanvraag. Wij nemen binnen één werkdag contact met u op.</p>
         </div>
       </div>
     </div>
@@ -2839,40 +2839,29 @@
   /* Contact formulier */
   function _veld(form, naam){ var el = form.querySelector('[name="'+naam+'"]'); return el ? el.value.trim() : ''; }
 
-  function verstuurForm(e) {
-    e.preventDefault();
-    var form = document.getElementById('contactForm');
-    var onderwerp = _veld(form,'Onderwerp') || 'Contactaanvraag';
-    var body =
-      'Naam: ' + _veld(form,'Voornaam') + ' ' + _veld(form,'Achternaam') + '\n' +
-      'E-mail: ' + _veld(form,'E-mailadres') + '\n' +
-      'Telefoon: ' + _veld(form,'Telefoonnummer') + '\n' +
-      'Onderwerp: ' + onderwerp + '\n\n' +
-      'Bericht:\n' + _veld(form,'Bericht') + '\n';
-    window.location.href = 'mailto:info@oudegeinexclusive.nl'
-      + '?subject=' + encodeURIComponent('Website-aanvraag: ' + onderwerp)
-      + '&body=' + encodeURIComponent(body);
-    form.style.display = 'none';
-    document.getElementById('formOk').style.display = 'block';
+  // Vult de onderwerpregel van de e-mail met naam/auto, zodat je in je inbox
+  // meteen ziet wie/wat het is. Geeft altijd true terug zodat het formulier verzendt.
+  function zetOnderwerpContact(form){
+    try{
+      var naam = (_veld(form,'Voornaam') + ' ' + _veld(form,'Achternaam')).trim();
+      var ond = _veld(form,'Onderwerp');
+      var s = 'Website-aanvraag';
+      if(ond) s += ' – ' + ond;
+      if(naam) s += ' – ' + naam;
+      var f = form.querySelector('[name="subject"]'); if(f) f.value = s;
+    }catch(e){}
+    return true;
   }
 
-  function verstuurZoek(e) {
-    e.preventDefault();
-    var form = document.getElementById('zoekForm');
-    var body =
-      'Zoekopdracht via de website:\n\n' +
-      'Merk: ' + _veld(form,'Merk') + '\n' +
-      'Model: ' + _veld(form,'Model') + '\n' +
-      'Maximale prijs: ' + _veld(form,'Maximale prijs') + '\n' +
-      'E-mail van klant: ' + _veld(form,'E-mailadres') + '\n';
-    window.location.href = 'mailto:info@oudegeinexclusive.nl'
-      + '?subject=' + encodeURIComponent('Website: Zoekopdracht')
-      + '&body=' + encodeURIComponent(body);
-    var btn = form.querySelector('button[type="submit"]');
-    var oud = btn.textContent;
-    btn.textContent = 'E-mail geopend ✓';
-    btn.style.background = '#5a7d5a';
-    setTimeout(function(){ form.reset(); btn.textContent = oud; btn.style.background = ''; }, 3500);
+  function zetOnderwerpZoek(form){
+    try{
+      var merk = _veld(form,'Merk');
+      var model = _veld(form,'Model');
+      var auto = (merk + ' ' + model).trim();
+      var s = 'Zoekopdracht' + (auto ? ' – ' + auto : '');
+      var f = form.querySelector('[name="subject"]'); if(f) f.value = s;
+    }catch(e){}
+    return true;
   }
 
   /* ===== GELUID VIDEO ===== */
