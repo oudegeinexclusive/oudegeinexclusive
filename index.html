@@ -2999,6 +2999,44 @@
     }
   });
 
+  // Geluid direct aanzetten bij de ALLEREERSTE interactie van de bezoeker.
+  // (Browsers blokkeren geluid dat vóór een klik/aanraking start — dit is de
+  //  snelst mogelijke manier: het geluid gaat aan zodra de bezoeker iets doet.)
+  function zetGeluidAan() {
+    var video = document.getElementById('heroVideo');
+    if (!video || window._geluidAan) return;
+    video.muted = false;
+    try { video.volume = 1.0; } catch (e) {}
+    var p = video.play();
+    if (p && p.catch) { p.catch(function(){}); }
+    window._geluidAan = true;
+    var icon = document.getElementById('geluidIcon');
+    var tekst = document.getElementById('geluidTekst');
+    var btn = document.getElementById('geluidBtn');
+    if (btn) { btn.style.background = 'rgba(139,123,111,0.55)'; btn.style.borderColor = 'rgba(244,237,227,0.9)'; }
+    if (tekst) { tekst.textContent = 'Geluid aan'; }
+    if (icon) {
+      icon.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>';
+    }
+  }
+
+  var _geluidEvents = ['pointerdown', 'touchstart', 'click', 'keydown'];
+  function _verwijderGeluidListeners() {
+    _geluidEvents.forEach(function (ev) { window.removeEventListener(ev, _eersteInteractie, true); });
+  }
+  function _eersteInteractie(e) {
+    // Klikt de bezoeker precies op de geluidknop? Laat die knop het dan zelf doen.
+    if (e && e.target && e.target.closest && e.target.closest('#geluidBtn')) {
+      _verwijderGeluidListeners();
+      return;
+    }
+    zetGeluidAan();
+    _verwijderGeluidListeners();
+  }
+  _geluidEvents.forEach(function (ev) {
+    window.addEventListener(ev, _eersteInteractie, true);
+  });
+
   /* Init */
   filterAutos(null, 'alle');
 </script>
