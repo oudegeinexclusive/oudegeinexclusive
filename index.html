@@ -1059,7 +1059,7 @@
     }
     .ster {
       width: 13px; height: 13px;
-      background: var(--taupe);
+      background: var(--goud);
       clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
     }
     .review-tekst {
@@ -1090,6 +1090,36 @@
     }
     .review-naam { font-size: 0.86rem; font-weight: 600; color: var(--bruin); }
     .review-auto { font-size: 0.73rem; color: var(--taupe-licht); margin-top: 2px; }
+
+    /* ===== GOOGLE-SCORE BALK ===== */
+    .google-score {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.9rem;
+      background: var(--beige-licht);
+      border: 1px solid var(--beige-donker);
+      border-radius: 4px;
+      padding: 0.9rem 1.4rem;
+      margin-bottom: 2.4rem;
+    }
+    .google-score-sterren { display: flex; gap: 3px; }
+    .google-score-cijfer { font-family: 'Georgia', serif; font-size: 1.25rem; color: var(--bruin); font-weight: 600; }
+    .google-score-tekst { font-size: 0.82rem; color: var(--subtekst); }
+    .google-score-link {
+      margin-left: auto;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--taupe-donker);
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .google-score-link:hover { color: var(--goud); }
+    @media (max-width: 560px) {
+      .google-score-link { margin-left: 0; width: 100%; }
+    }
 
     /* ===== VERZEKERING ===== */
     .verzek-grid {
@@ -2579,26 +2609,47 @@
 <!-- ===== REVIEWS ===== -->
 <section id="reviews" class="sectie sectie-wit">
   <div class="container">
-    <div class="sectie-kop" style="margin-bottom:3rem;">
+    <div class="sectie-kop" style="margin-bottom:1.6rem;">
       <span class="sectie-label">Klantervaringen</span>
-      <h2>Reviews</h2>
-      <p>Wij zijn trots op de relaties die wij met onze klanten opbouwen. Lees hun ervaringen.</p>
+      <h2>Wat Onze Klanten Zeggen</h2>
+      <p>Echte beoordelingen van klanten die hun auto bij Oudegein Exclusive vonden.</p>
+    </div>
+    <div class="google-score">
+      <div class="google-score-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
+      <span class="google-score-cijfer">5,0</span>
+      <span class="google-score-tekst">op basis van 11 Google-reviews</span>
+      <a href="https://www.google.com/search?q=oudegein+exclusive+reviews" target="_blank" rel="noopener" class="google-score-link">Bekijk op Google &rarr;</a>
     </div>
     <div class="reviews-grid">
       <div class="review-kaart">
         <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
-        <p class="review-tekst">"Prachtige ervaring van begin tot eind. Het team heeft mij uitstekend geholpen bij het vinden van mijn BMW M4. Professioneel, eerlijk en geen gedoe. Ik keer hier zeker terug."</p>
-        <div class="review-persoon"><div class="review-init">MV</div><div><div class="review-naam">Mark van der Berg</div><div class="review-auto">BMW M4 Competition &mdash; 2022</div></div></div>
+        <p class="review-tekst">"Opzoek naar wat anders, gereageerd op de advertentie van de Hyundai Tucson. Niet verwacht, maar wat een warm ontvangst. Een prachtige wagen met uitstekende service. Bij de aflevering merk je echt dat je gewaardeerd wordt en alleen het beste ertoe doet. Zal dit bedrijf zeker aanbevelen — top man, bedankt!"</p>
+        <div class="review-persoon"><div class="review-init">LV</div><div><div class="review-naam">Louis Van Laere</div><div class="review-auto">Via Google &middot; 5 mnd geleden</div></div></div>
       </div>
       <div class="review-kaart">
         <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
-        <p class="review-tekst">"Eindelijk een dealer die echt luistert. De Mercedes GLE was exact wat ik zocht. De inruilwaarde van mijn oude auto was eerlijk en de aflevering was vlekkeloos. Aanrader!"</p>
-        <div class="review-persoon"><div class="review-init">SH</div><div><div class="review-naam">Sandra Hendriks</div><div class="review-auto">Mercedes-Benz GLE 400d &mdash; 2023</div></div></div>
+        <p class="review-tekst">"De manier van praten en communiceren beviel ons enorm. Eenmaal binnen werden we gesmolten door het prachtige kantoor. De auto stond zo strak in de showroom dat we beide al wisten dat dit hem zou worden — binnen en buiten volledig gereinigd. Zo'n service, ontvangst en communicatie hebben we nooit eerder meegemaakt. Als we meer sterren konden aanvinken, hadden we dat zeker gedaan!"</p>
+        <div class="review-persoon"><div class="review-init">JP</div><div><div class="review-naam">Jens Pens</div><div class="review-auto">Via Google &middot; 7 mnd geleden</div></div></div>
       </div>
       <div class="review-kaart">
         <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
-        <p class="review-tekst">"Uitstekende service bij de import van mijn Porsche uit Duitsland. Alles werd geregeld: transport, keuring en registratie. Sterk aanbevolen voor iedereen die een auto wil importeren."</p>
-        <div class="review-persoon"><div class="review-init">RM</div><div><div class="review-naam">Roel Maas</div><div class="review-auto">Porsche Cayenne GTS &mdash; Import</div></div></div>
+        <p class="review-tekst">"Wat zijn we vriendelijk en transparant geholpen bij de aanschaf van onze nieuwe Hyundai Tucson. De service was zeer aangenaam en het hele proces tot we de auto hadden opgehaald verliep naar wens! Super goed gedaan, Oudegein Exclusive!"</p>
+        <div class="review-persoon"><div class="review-init">DD</div><div><div class="review-naam">Daphne</div><div class="review-auto">Via Google &middot; 5 mnd geleden</div></div></div>
+      </div>
+      <div class="review-kaart">
+        <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
+        <p class="review-tekst">"Wij hadden al meerdere auto's bezichtigd, maar telkens voldeed het net niet. Via internet kwamen wij per toeval terecht bij Oudegein Exclusive. Eenmaal op locatie werden wij warm ontvangen in een prachtig kantoor. Vooral de service en het verkoopgesprek voelden zeer vertrouwd en professioneel. Super blij dat wij hier terecht zijn gekomen!"</p>
+        <div class="review-persoon"><div class="review-init">SM</div><div><div class="review-naam">Sophie Meijer</div><div class="review-auto">Via Google &middot; 7 mnd geleden</div></div></div>
+      </div>
+      <div class="review-kaart">
+        <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
+        <p class="review-tekst">"Vanaf het eerste contact werden we vriendelijk en professioneel geholpen. De auto zag er bij aflevering perfect uit: schoon, netjes gepoetst en technisch helemaal in orde. De communicatie verliep snel en prettig. Ik zou dit bedrijf zeker aanraden aan iedereen die op zoek is naar een betrouwbare auto en goede service!"</p>
+        <div class="review-persoon"><div class="review-init">DH</div><div><div class="review-naam">Danielle Hilgeman</div><div class="review-auto">Via Google &middot; 7 mnd geleden</div></div></div>
+      </div>
+      <div class="review-kaart">
+        <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
+        <p class="review-tekst">"Heel vriendelijk en deskundig geholpen met de aankoop van onze nieuwe auto, een mooie Hyundai Tucson! We hopen er veel rijplezier in te hebben. Bedankt!!"</p>
+        <div class="review-persoon"><div class="review-init">MB</div><div><div class="review-naam">Marjet Blom</div><div class="review-auto">Via Google &middot; 5 mnd geleden</div></div></div>
       </div>
     </div>
   </div>
