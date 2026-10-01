@@ -3020,9 +3020,12 @@
     }
   }
 
-  var _geluidEvents = ['pointerdown', 'touchstart', 'click', 'keydown'];
+  var _geluidEvents = ['pointerdown', 'pointerup', 'touchstart', 'touchend', 'mousedown', 'click', 'keydown'];
   function _verwijderGeluidListeners() {
-    _geluidEvents.forEach(function (ev) { window.removeEventListener(ev, _eersteInteractie, true); });
+    _geluidEvents.forEach(function (ev) {
+      window.removeEventListener(ev, _eersteInteractie, true);
+      document.removeEventListener(ev, _eersteInteractie, true);
+    });
   }
   function _eersteInteractie(e) {
     // Klikt de bezoeker precies op de geluidknop? Laat die knop het dan zelf doen.
@@ -3035,6 +3038,7 @@
   }
   _geluidEvents.forEach(function (ev) {
     window.addEventListener(ev, _eersteInteractie, true);
+    document.addEventListener(ev, _eersteInteractie, true);
   });
 
   /* Init */
