@@ -1121,6 +1121,85 @@
       .google-score-link { margin-left: 0; width: 100%; }
     }
 
+    /* ===== ZEKERHEDEN / VERTROUWEN ===== */
+    .zeker-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+    }
+    .zeker-kaart {
+      background: var(--wit);
+      border: 1px solid var(--beige-donker);
+      padding: 2rem 1.6rem;
+      text-align: center;
+    }
+    .zeker-icoon {
+      width: 54px; height: 54px;
+      margin: 0 auto 1.1rem;
+      border-radius: 50%;
+      background: var(--beige-licht);
+      border: 1px solid var(--goud);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--taupe-donker);
+    }
+    .zeker-icoon svg { width: 24px; height: 24px; }
+    .zeker-kaart h3 {
+      font-family: 'Georgia', serif;
+      font-weight: normal;
+      font-size: 1.02rem;
+      color: var(--bruin);
+      margin-bottom: 0.5rem;
+    }
+    .zeker-kaart p {
+      font-size: 0.82rem;
+      color: var(--subtekst);
+      line-height: 1.7;
+    }
+    @media (max-width: 860px) {
+      .zeker-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 480px) {
+      .zeker-grid { grid-template-columns: 1fr; }
+    }
+    .bovag-balk {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2.6rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--beige-donker);
+    }
+    .bovag-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--taupe);
+    }
+    .bovag-logo {
+      height: 62px;
+      width: auto;
+      display: block;
+      background: #fff;
+      padding: 6px;
+      border-radius: 4px;
+      box-shadow: 0 2px 10px rgba(107,95,83,0.15);
+    }
+    .bovag-fallback {
+      display: none;
+      align-items: center;
+      font-family: 'Georgia', serif;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      font-size: 1.4rem;
+      color: var(--bruin);
+      border: 2px solid var(--goud);
+      padding: 0.3rem 0.9rem;
+      border-radius: 3px;
+    }
+
     /* ===== VERZEKERING ===== */
     .verzek-grid {
       display: grid;
@@ -2664,6 +2743,52 @@
         <p class="review-tekst">"Heel vriendelijk en deskundig geholpen met de aankoop van onze nieuwe auto, een mooie Hyundai Tucson! We hopen er veel rijplezier in te hebben. Bedankt!!"</p>
         <div class="review-persoon"><div class="review-init">MB</div><div><div class="review-naam">Marjet Blom</div><div class="review-auto">Via Google &middot; 5 mnd geleden</div></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ZEKERHEDEN / VERTROUWEN ===== -->
+<section class="sectie sectie-beige" id="zekerheden">
+  <div class="container">
+    <div class="sectie-kop" style="margin-bottom:2.6rem;">
+      <span class="sectie-label">Onze Zekerheden</span>
+      <h2>Kopen Met Een Gerust Gevoel</h2>
+      <p>Van keuring tot aflevering: wij regelen alles zodat u zorgeloos in uw nieuwe auto rijdt.</p>
+    </div>
+    <div class="zeker-grid">
+      <div class="zeker-kaart">
+        <div class="zeker-icoon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <h3>Garantie op elke auto</h3>
+        <p>Ieder voertuig wordt geleverd met garantie. Aanvullende garantie bespreken wij graag per auto.</p>
+      </div>
+      <div class="zeker-kaart">
+        <div class="zeker-icoon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg>
+        </div>
+        <h3>Grondig gekeurd &amp; gereinigd</h3>
+        <p>Elke auto wordt technisch doorgelicht en volledig gedetailleerd vóór aflevering.</p>
+      </div>
+      <div class="zeker-kaart">
+        <div class="zeker-icoon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+        </div>
+        <h3>Financiering &amp; lease mogelijk</h3>
+        <p>Wij regelen een passende financiering of lease, volledig afgestemd op uw situatie.</p>
+      </div>
+      <div class="zeker-kaart">
+        <div class="zeker-icoon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+        </div>
+        <h3>Eerlijk &amp; transparant</h3>
+        <p>Duidelijke prijzen, heldere communicatie en een vlotte afhandeling van alle papieren.</p>
+      </div>
+    </div>
+    <div class="bovag-balk">
+      <span class="bovag-label">Erkend lid van</span>
+      <img src="bovag-logo.png" alt="BOVAG erkend lid" class="bovag-logo" onerror="this.style.display='none'; this.parentNode.querySelector('.bovag-fallback').style.display='inline-flex';">
+      <span class="bovag-fallback" aria-hidden="true">BOVAG</span>
     </div>
   </div>
 </section>
