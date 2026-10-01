@@ -1654,9 +1654,27 @@
       .calculator { padding: 1.8rem 1.4rem; }
       .calc-maand { font-size: 1.5rem; }
 
-      /* Reviews */
-      .reviews-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .review-kaart { padding: 1.5rem; }
+      /* Reviews — horizontale swipe-carrousel op mobiel */
+      .reviews-grid {
+        display: flex;
+        grid-template-columns: none;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 1rem;
+        padding: 0 0 0.8rem 0;
+        margin: 0 -1.2rem;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+        scroll-padding-left: 1.2rem;
+        scrollbar-width: none;
+      }
+      .reviews-grid::-webkit-scrollbar { display: none; }
+      .review-kaart {
+        flex: 0 0 86%;
+        scroll-snap-align: start;
+        padding: 1.5rem;
+      }
 
       /* Import/Export */
       .proc-kaart { padding: 1.5rem; }
@@ -2620,6 +2638,7 @@
       <span class="google-score-tekst">op basis van 11 Google-reviews</span>
       <a href="https://www.google.com/search?q=oudegein+exclusive+reviews" target="_blank" rel="noopener" class="google-score-link">Bekijk op Google &rarr;</a>
     </div>
+    <div class="swipe-hint">&larr; swipe voor meer reviews &rarr;</div>
     <div class="reviews-grid">
       <div class="review-kaart">
         <div class="review-sterren"><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div><div class="ster"></div></div>
