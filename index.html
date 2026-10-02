@@ -11,6 +11,12 @@
   <link rel="canonical" href="https://oudegeinexclusive.nl/">
   <meta name="theme-color" content="#3D322A">
 
+  <!-- Lokale SEO (geo) -->
+  <meta name="geo.region" content="NL-UT">
+  <meta name="geo.placename" content="Nieuwegein">
+  <meta name="geo.position" content="52.0225;5.0803">
+  <meta name="ICBM" content="52.0225, 5.0803">
+
   <!-- Favicons / app icons -->
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -56,7 +62,35 @@
     "openingHoursSpecification": [
       {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:00","closes":"18:00"},
       {"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"17:00"}
-    ]
+    ],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "52.0225",
+      "longitude": "5.0803"
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Oudegein+Exclusive+Nieuwegein",
+    "areaServed": [
+      {"@type":"City","name":"Nieuwegein"},
+      {"@type":"City","name":"Utrecht"},
+      {"@type":"AdministrativeArea","name":"Provincie Utrecht"},
+      {"@type":"Country","name":"Nederland"}
+    ],
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Bankoverschrijving, Financiering, Lease",
+    "makesOffer": [
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Verkoop premium en luxe voertuigen"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Inkoop en taxatie"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Financiering en financial lease"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Import en export van voertuigen"}},
+      {"@type":"Offer","itemOffered":{"@type":"Service","name":"Autoverzekering"}}
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "11",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
   }
   </script>
 
@@ -2800,7 +2834,7 @@
     </div>
     <div class="bovag-balk">
       <span class="bovag-label">Erkend lid van</span>
-      <img src="bovag-logo.png" alt="BOVAG erkend lid" class="bovag-logo" onerror="this.style.display='none'; this.parentNode.querySelector('.bovag-fallback').style.display='inline-flex';">
+      <img src="bovag-logo.png" alt="BOVAG erkend lid — Oudegein Exclusive" class="bovag-logo" loading="lazy" width="152" height="240" onerror="this.style.display='none'; this.parentNode.querySelector('.bovag-fallback').style.display='inline-flex';">
       <span class="bovag-fallback" aria-hidden="true">BOVAG</span>
     </div>
   </div>
@@ -2867,7 +2901,7 @@
 <footer>
   <div class="footer-hoofd">
     <div class="footer-col">
-      <img src="oudegein-logo-licht.svg" alt="Oudegein Exclusive" class="footer-logo-img">
+      <img src="oudegein-logo-licht.svg" alt="Oudegein Exclusive — luxe automotive dealer Nieuwegein" class="footer-logo-img" loading="lazy">
       <div class="footer-logo-sub">Premium Automotive · Nieuwegein</div>
       <p class="footer-desc">Specialist in exclusieve en luxe voertuigen, financiering, import, export en verzekering. Gevestigd in Nieuwegein, bereikbaar voor heel Nederland.</p>
     </div>
