@@ -813,6 +813,75 @@
     .voorraad-wrap { margin-top: 0.5rem; }
     .voorraad-wrap #autodealers_frame { width: 100%; border: none; display: block; }
 
+    /* ===== CTA-BAND ===== */
+    .cta-band {
+      background:
+        radial-gradient(ellipse at 85% 0%, rgba(198,166,100,0.12) 0%, transparent 55%),
+        linear-gradient(135deg, var(--bruin-diep) 0%, var(--bruin) 100%);
+      padding: 3.6rem 0;
+    }
+    .cta-band-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .cta-band-tekst h2 {
+      font-family: 'Georgia', serif;
+      font-weight: normal;
+      color: var(--wit);
+      font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+      margin: 0.35rem 0 0.5rem;
+      line-height: 1.25;
+    }
+    .cta-band-tekst p { color: rgba(255,255,255,0.6); font-size: 0.95rem; max-width: 460px; line-height: 1.7; }
+    .cta-band-knoppen { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-goud {
+      display: inline-block;
+      background: var(--goud);
+      color: var(--bruin-diep);
+      padding: 0.95rem 2rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-goud:hover { background: var(--goud-licht); transform: translateY(-1px); }
+    .btn-wa-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--wa-groen);
+      color: #fff;
+      padding: 0.95rem 1.8rem;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-weight: 700;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-wa-cta:hover { background: var(--wa-donker); transform: translateY(-1px); }
+    @media (max-width: 720px) {
+      .cta-band-inner { flex-direction: column; align-items: flex-start; }
+      .cta-band-knoppen { width: 100%; }
+      .btn-goud, .btn-wa-cta { flex: 1; justify-content: center; text-align: center; }
+    }
+
+    /* ===== FOOTER SOCIAL ===== */
+    .footer-social { display: flex; gap: 0.6rem; margin-top: 1.2rem; }
+    .social-knop {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1px solid rgba(198,166,100,0.4);
+      border-radius: 50%;
+      color: var(--goud-licht);
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .social-knop:hover { background: var(--goud); color: var(--bruin-diep); border-color: var(--goud); }
+    .social-knop svg { width: 18px; height: 18px; }
+
     /* ===== VERKOCHT SECTIE ===== */
     .verkocht-grid {
       display: grid;
@@ -2322,55 +2391,6 @@
 
 </section>
 
-<!-- ===== ZOEK ===== -->
-<section id="zoeken">
-  <div class="zoeken-inner">
-    <div class="zoeken-veld">
-      <label>Merk</label>
-      <select>
-        <option value="">Alle merken</option>
-        <option>Audi</option><option>BMW</option><option>Ferrari</option>
-        <option>Lamborghini</option><option>Mercedes-Benz</option>
-        <option>Porsche</option><option>Range Rover</option><option>Tesla</option>
-      </select>
-    </div>
-    <div class="zoeken-veld">
-      <label>Type</label>
-      <select>
-        <option value="">Alle types</option>
-        <option>Sedan</option><option>SUV / Crossover</option>
-        <option>Coupé</option><option>Cabriolet</option><option>Elektrisch</option>
-      </select>
-    </div>
-    <div class="zoeken-veld">
-      <label>Maximale prijs</label>
-      <select>
-        <option value="">Geen limiet</option>
-        <option>Tot &euro; 75.000</option><option>Tot &euro; 100.000</option>
-        <option>Tot &euro; 150.000</option><option>Tot &euro; 200.000</option>
-        <option>Boven &euro; 200.000</option>
-      </select>
-    </div>
-    <div class="zoeken-veld">
-      <label>Bouwjaar</label>
-      <select>
-        <option value="">Alle jaren</option>
-        <option>2024</option><option>2023</option>
-        <option>2022</option><option>2021</option><option>2020 of ouder</option>
-      </select>
-    </div>
-    <div class="zoeken-veld">
-      <label>Brandstof</label>
-      <select>
-        <option value="">Alle brandstof</option>
-        <option>Benzine</option><option>Diesel</option>
-        <option>Hybride</option><option>Elektrisch</option>
-      </select>
-    </div>
-    <button class="zoeken-btn" onclick="document.getElementById('aanbod').scrollIntoView({behavior:'smooth'})">Zoeken</button>
-  </div>
-</section>
-
 <!-- ===== ONS AANBOD ===== -->
 <section id="aanbod" class="sectie sectie-wit">
   <div class="container">
@@ -2800,6 +2820,24 @@
   </div>
 </section>
 
+<!-- ===== CTA-BAND ===== -->
+<section class="cta-band">
+  <div class="container cta-band-inner">
+    <div class="cta-band-tekst">
+      <span class="sectie-label" style="color:var(--goud-licht);">Interesse?</span>
+      <h2>Op zoek naar uw volgende voertuig?</h2>
+      <p>Plan vrijblijvend een bezichtiging of vraag direct advies aan. Wij denken graag met u mee.</p>
+    </div>
+    <div class="cta-band-knoppen">
+      <a href="#contact" class="btn-goud">Afspraak maken</a>
+      <a href="https://wa.me/31644414489" target="_blank" rel="noopener" class="btn-wa-cta">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 0 0 1.511 5.26l-.999 3.648 3.736-.979 .24 .129zm5.883-6.571c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- ===== CONTACT ===== -->
 <section id="contact" class="sectie sectie-bruin">
   <div class="container">
@@ -2864,6 +2902,14 @@
       <img src="oudegein-logo-licht.svg" alt="Oudegein Exclusive — luxe automotive dealer Nieuwegein" class="footer-logo-img" loading="lazy">
       <div class="footer-logo-sub">Premium Automotive · Nieuwegein</div>
       <p class="footer-desc">Specialist in exclusieve en luxe voertuigen, financiering, import, export en verzekering. Gevestigd in Nieuwegein, bereikbaar voor heel Nederland.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/oudegein.exclusive/" target="_blank" rel="noopener" class="social-knop" aria-label="Volg Oudegein Exclusive op Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@oudegein.exclusive" target="_blank" rel="noopener" class="social-knop" aria-label="Volg Oudegein Exclusive op TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.78.12V9.78a5.7 5.7 0 0 0-.78-.06 5.69 5.69 0 1 0 5.69 5.69V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.25-1.48z"/></svg>
+        </a>
+      </div>
     </div>
     <div class="footer-col">
       <h4>Navigatie</h4>
