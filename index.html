@@ -809,6 +809,10 @@
     }
     .meer-link { text-align: center; margin-top: 2.5rem; }
 
+    /* ===== VOORRAADLIJST (VWE) ===== */
+    .voorraad-wrap { margin-top: 0.5rem; }
+    .voorraad-wrap #autodealers_frame { width: 100%; border: none; display: block; }
+
     /* ===== VERKOCHT SECTIE ===== */
     .verkocht-grid {
       display: grid;
@@ -2373,22 +2377,17 @@
 <!-- ===== ONS AANBOD ===== -->
 <section id="aanbod" class="sectie sectie-wit">
   <div class="container">
-    <div class="sectie-kop-flex">
-      <div class="sectie-kop">
-        <span class="sectie-label">Ons Aanbod</span>
-        <h2>Actuele Voertuigen</h2>
-        <p>Elk voertuig is zorgvuldig geselecteerd en technisch gekeurd. Wij staan garant voor kwaliteit.</p>
-      </div>
-      <div class="filter-tabs" id="filterTabs">
-        <button class="filter-tab actief" onclick="filterAutos(this,'alle')">Alle</button>
-        <button class="filter-tab" onclick="filterAutos(this,'sedan')">Sedan</button>
-        <button class="filter-tab" onclick="filterAutos(this,'suv')">SUV</button>
-        <button class="filter-tab" onclick="filterAutos(this,'coupe')">Coupé</button>
-        <button class="filter-tab" onclick="filterAutos(this,'elektrisch')">Elektrisch</button>
-      </div>
+    <div class="sectie-kop">
+      <span class="sectie-label">Ons Aanbod</span>
+      <h2>Actuele Voertuigen</h2>
+      <p>Bekijk hieronder ons volledige, actuele aanbod. Dit overzicht wordt automatisch bijgewerkt via onze voorraad.</p>
     </div>
-    <div class="auto-grid" id="autoGrid"></div>
-    <div class="swipe-hint">← swipe voor meer auto's →</div>
+    <!-- Voorraadlijst (VWE / Autodealers.nl) -->
+    <div class="voorraad-wrap">
+      <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+      <script src="//svl.autodealers.nl/jsVoorraadPlugin.ashx?did=17252"></script>
+      <noscript>Schakel JavaScript in om ons actuele voertuigaanbod te bekijken.</noscript>
+    </div>
     <div class="meer-link">
       <a href="#contact" class="btn-taupe" style="display:inline-block;">Meer informatie aanvragen</a>
     </div>
@@ -3035,9 +3034,13 @@
       document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('actief'));
       btn.classList.add('actief');
     }
-    const lijst = filter === 'alle' ? voertuigen : voertuigen.filter(v => v.cat === filter);
-    document.getElementById('autoGrid').innerHTML = lijst.map(maakKaart).join('');
-    document.getElementById('aanbod').scrollIntoView({ behavior: 'smooth' });
+    var grid = document.getElementById('autoGrid');
+    if (grid) {
+      const lijst = filter === 'alle' ? voertuigen : voertuigen.filter(v => v.cat === filter);
+      grid.innerHTML = lijst.map(maakKaart).join('');
+    }
+    var aanbodSectie = document.getElementById('aanbod');
+    if (aanbodSectie) aanbodSectie.scrollIntoView({ behavior: 'smooth' });
   }
 
   /* Modal */
@@ -3289,8 +3292,7 @@
     document.addEventListener(ev, _eersteInteractie, true);
   });
 
-  /* Init */
-  filterAutos(null, 'alle');
+  /* Init: voorraad komt nu via de VWE-plugin in #aanbod; geen voorbeeldlijst meer renderen */
 </script>
 </body>
 </html>
