@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) met Consent Mode v2 (AVG) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L94VHMG5S"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    // Standaard geen toestemming: Analytics meet pas na akkoord van de bezoeker
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied',
+      'wait_for_update': 500
+    });
+    // Eerder gegeven toestemming herstellen
+    try {
+      if (localStorage.getItem('oe_cookie_consent') === 'granted') {
+        gtag('consent', 'update', { 'analytics_storage': 'granted' });
+      }
+    } catch (e) {}
     gtag('js', new Date());
     gtag('config', 'G-L94VHMG5S');
   </script>
@@ -95,7 +109,7 @@
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5.0",
-      "reviewCount": "11",
+      "reviewCount": "12",
       "bestRating": "5",
       "worstRating": "1"
     }
@@ -2231,6 +2245,54 @@
       transition: background 0.2s;
     }
     .calc-offerte-btn:hover { background: var(--bruin); }
+
+    /* ===== Cookiemelding (AVG) ===== */
+    .cookie-banner {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(140%);
+      z-index: 9999;
+      width: calc(100% - 2.5rem);
+      max-width: 820px;
+      background: var(--bruin-diep);
+      color: var(--beige-licht);
+      border: 1px solid rgba(198,166,100,0.35);
+      border-radius: 14px;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+      padding: 1.35rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(.16,.84,.44,1), opacity 0.5s ease;
+    }
+    .cookie-banner.zichtbaar { transform: translateX(-50%) translateY(0); opacity: 1; }
+    .cookie-tekst { flex: 1 1 auto; font-size: 0.9rem; line-height: 1.55; }
+    .cookie-tekst strong { color: var(--goud-licht); display: block; margin-bottom: 0.25rem; font-size: 0.98rem; letter-spacing: 0.3px; }
+    .cookie-tekst a { color: var(--goud); text-decoration: underline; }
+    .cookie-knoppen { flex: 0 0 auto; display: flex; flex-direction: column; gap: 0.55rem; }
+    .cookie-btn {
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      font-size: 0.86rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      padding: 0.7rem 1.4rem;
+      border-radius: 8px;
+      transition: var(--overgang);
+      white-space: nowrap;
+    }
+    .cookie-btn-accept { background: var(--goud); color: var(--bruin-diep); }
+    .cookie-btn-accept:hover { background: var(--goud-licht); }
+    .cookie-btn-reject { background: transparent; color: var(--beige-licht); border: 1px solid rgba(228,206,155,0.4); }
+    .cookie-btn-reject:hover { border-color: var(--goud); color: var(--goud-licht); }
+    @media (max-width: 640px) {
+      .cookie-banner { flex-direction: column; align-items: stretch; gap: 1rem; bottom: 0.75rem; padding: 1.2rem 1.25rem; }
+      .cookie-knoppen { flex-direction: row; }
+      .cookie-btn { flex: 1 1 0; text-align: center; }
+    }
   </style>
 </head>
 <body>
@@ -3299,5 +3361,36 @@
 
   /* Init: voorraad komt nu via de VWE-plugin in #aanbod; geen voorbeeldlijst meer renderen */
 </script>
+  <!-- ===== Cookiemelding (AVG) ===== -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookietoestemming">
+    <div class="cookie-tekst">
+      <strong>Cookies op deze website</strong>
+      Wij gebruiken functionele cookies en — met uw toestemming — analytische cookies om onze website te verbeteren. Lees meer in ons <a href="privacybeleid.html">privacybeleid</a>.
+    </div>
+    <div class="cookie-knoppen">
+      <button class="cookie-btn cookie-btn-accept" id="cookieAccept">Accepteren</button>
+      <button class="cookie-btn cookie-btn-reject" id="cookieReject">Weigeren</button>
+    </div>
+  </div>
+  <script>
+    (function () {
+      var banner = document.getElementById('cookieBanner');
+      var keuze;
+      try { keuze = localStorage.getItem('oe_cookie_consent'); } catch (e) {}
+      if (!keuze) {
+        setTimeout(function () { banner.classList.add('zichtbaar'); }, 900);
+      }
+      function sluit() { banner.classList.remove('zichtbaar'); }
+      document.getElementById('cookieAccept').addEventListener('click', function () {
+        try { localStorage.setItem('oe_cookie_consent', 'granted'); } catch (e) {}
+        if (typeof gtag === 'function') { gtag('consent', 'update', { 'analytics_storage': 'granted' }); }
+        sluit();
+      });
+      document.getElementById('cookieReject').addEventListener('click', function () {
+        try { localStorage.setItem('oe_cookie_consent', 'denied'); } catch (e) {}
+        sluit();
+      });
+    })();
+  </script>
 </body>
 </html>
