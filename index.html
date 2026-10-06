@@ -888,8 +888,17 @@
     .btn-wa-cta:hover { background: var(--wa-donker); transform: translateY(-1px); }
     @media (max-width: 720px) {
       .cta-band-inner { flex-direction: column; align-items: flex-start; }
-      .cta-band-knoppen { width: 100%; }
-      .btn-goud, .btn-wa-cta { flex: 1; justify-content: center; text-align: center; }
+      .cta-band-knoppen { width: 100%; gap: 0.6rem; }
+      .btn-goud, .btn-wa-cta {
+        flex: 1;
+        justify-content: center;
+        text-align: center;
+        padding: 0.72rem 0.6rem;
+        font-size: 0.66rem;
+        letter-spacing: 0.08em;
+      }
+      .btn-wa-cta { gap: 0.4rem; }
+      .btn-wa-cta svg { width: 15px; height: 15px; }
     }
 
     /* ===== FOOTER SOCIAL ===== */
