@@ -834,6 +834,7 @@
     /* ===== VOORRAADLIJST (VWE) ===== */
     .voorraad-wrap { margin-top: 0.5rem; }
     .voorraad-wrap #autodealers_frame { width: 100%; border: none; display: block; }
+    #aanbod { scroll-margin-top: 90px; }
 
     /* ===== CTA-BAND ===== */
     .cta-band {
@@ -3390,6 +3391,58 @@
         try { localStorage.setItem('oe_cookie_consent', 'denied'); } catch (e) {}
         sluit();
       });
+    })();
+  </script>
+  <!-- ===== Voorraad: voorkom terugspringen naar de video bij filteren ===== -->
+  <script>
+    (function () {
+      var aanbod = document.getElementById('aanbod');
+      if (!aanbod) return;
+      var binnenGeweest = false;
+
+      function aanbodTop() {
+        return aanbod.getBoundingClientRect().top + window.pageYOffset;
+      }
+      // Onthoud of de bezoeker daadwerkelijk bij het aanbod aan het kijken is
+      window.addEventListener('scroll', function () {
+        if (window.pageYOffset >= aanbodTop() - 300) binnenGeweest = true;
+      }, { passive: true });
+
+      // Zet de weergave terug op het aanbod als de plugin naar boven springt
+      function herankeren() {
+        if (!binnenGeweest) return;
+        var doel = aanbodTop() - 80;
+        if (window.pageYOffset < doel - 150) {
+          window.scrollTo(0, doel);
+        }
+      }
+
+      function volgFrame() {
+        var frame = document.getElementById('autodealers_frame');
+        if (!frame) { setTimeout(volgFrame, 500); return; }
+        var vorigeHoogte = frame.offsetHeight;
+        try {
+          var mo = new MutationObserver(function () {
+            var h = frame.offsetHeight;
+            if (h !== vorigeHoogte) {
+              vorigeHoogte = h;
+              setTimeout(herankeren, 40);
+              setTimeout(herankeren, 250);
+              setTimeout(herankeren, 600);
+            }
+          });
+          mo.observe(frame, { attributes: true, attributeFilter: ['style', 'height'] });
+        } catch (e) {}
+      }
+
+      // De VWE-plugin stuurt een bericht bij het herladen van de resultaten
+      window.addEventListener('message', function () {
+        setTimeout(herankeren, 40);
+        setTimeout(herankeren, 300);
+      });
+
+      if (document.readyState === 'complete') { volgFrame(); }
+      else { window.addEventListener('load', volgFrame); }
     })();
   </script>
 </body>
